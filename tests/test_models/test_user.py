@@ -25,12 +25,12 @@ class TestsUser(unittest.TestCase):
     def test_normal_user(self):
         """normal cases"""
         my_object = User()
-        my_object.name = "Fantastic"
-        my_object.my_number = 14
+        my_object.name = "My First Model"
+        my_object.my_number = 89
         my_object.save()
         my_object_dict = my_object.to_dict()
-        self.assertEqual(my_object.name, "Fantastic")
-        self.assertEqual(my_object.my_number, 14)
+        self.assertEqual(my_object.name, "My First Model")
+        self.assertEqual(my_object.my_number, 89)
         self.assertEqual(my_object.__class__.__name__, "User")
         self.assertEqual(isinstance(my_object.created_at, datetime), True)
         self.assertEqual(isinstance(my_object.updated_at, datetime), True)
