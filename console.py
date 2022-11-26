@@ -13,6 +13,7 @@ from models.user import User
 import shlex
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """HBNB command lines"""
     prompt = "(hbnb) "
@@ -46,10 +47,8 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     try:
                         value = int(value)
-                    except:
                         try:
                             value = float(value)
-                        except:
                             continue
                         new_dict[key] = value
             return new_dict
@@ -70,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         instance.save()
 
     def do_show(self, arg):
-        """ Prints the string representation of an instance based on the class name and id"""
+        """ Prints the string representation of an instance based"""
         args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
@@ -106,8 +105,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** class doesn't exist **")
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based 
-        or not on the class name"""
+        """Prints all string representation of all instances based"""
         args = shlex.split(arg)
         obj_list = []
         if len(args) == 0:
@@ -141,25 +139,24 @@ class HBNBCommand(cmd.Cmd):
                                 if args[2] in integers:
                                     try:
                                         args[3] = int(args[3])
-                                    except:
                                         args[3] = 0
                                     elif args[2] in floats:
                                         try:
-                                        args[3] = float(args[3])
-                                        except:
+                                            args[3] = float(args[3])
                                             args[3] = 0.0
-                                            setattr(models.storage.all()[k], args[2], args[3])
-                                            models.storage.all()[k].save()
-                                        else:
-                                            print("** value missing **")
-                                        else:
-                                            print("** attribute name missing **")
-                                        else:
-                                            print("** no instance found **")
-                                        else:
-                                            print("** instance id missing **")
-                                        else:
-                                            print("** class doesn't exist **")
+            setattr(models.storage.all()[k], args[2], args[3])
+            models.storage.all()[k].save()
+        else:
+            print("** value missing **")
+        else:
+            print("** attribute name missing **")
+        else:
+            print("** no instance found **")
+        else:
+            print("** instance id missing **")
+        else:
+            print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

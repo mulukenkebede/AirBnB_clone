@@ -48,4 +48,4 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as q:
                 other_dict = json.loads(q.read())
                 for key, val in other_dict.items():
-                    self.new(my_dict[val['__class__']](**val)
+                    self.new(my_dict[val['__class__']](**val))
