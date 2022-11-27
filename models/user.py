@@ -11,6 +11,4 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def __init__(self, *args, **kwargs):
-        """the init constructor"""
-        super().__init__(**kwargs)
+    
